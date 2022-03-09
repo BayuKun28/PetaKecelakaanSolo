@@ -13,7 +13,7 @@
                 </ul>
                 <div class="clearfix"></div>
                 <div class="row">
-                    <form action="<?= base_url('Rangkuman/peta') ?>" method="POST" class="row col-md-12">
+                    <form action="<?= base_url('Rangkuman/peta') ?>" method="POST" class="row col-md-12 p-3">
                         <div class="col-md-2">
                             <input type="text" class="form-control" value="<?= $tanggalawal; ?>" name="tglawal" id="tglawal">
                         </div>
