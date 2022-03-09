@@ -50,6 +50,12 @@
                       <li><a href="tables_dynamic.html">Table Dynamic</a></li>
                     </ul>
                   </li>
+                  <li><a><i class="fa fa-user"></i> Pengguna <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="<?= base_url('Auth/pengguna');  ?>">Data Pengguna</a></li>
+                      <li><a href="<?= base_url('Auth/FormInput');  ?>">Input Pengguna</a></li>
+                    </ul>
+                  </li>
                 </ul>
               </div>
 

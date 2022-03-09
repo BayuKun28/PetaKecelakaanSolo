@@ -15,7 +15,7 @@ class Kecamatan extends CI_Controller
     {
 
         $data['title'] = 'Kecamatan';
-        $data['user'] = $this->db->get('pengguna', ['username' => $this->session->userdata('username')])->row_array();
+        $data['user'] = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
         $data['kecamatan'] = $this->kecamatan_model->read();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -26,7 +26,7 @@ class Kecamatan extends CI_Controller
     {
 
         $data['title'] = 'Form Input Kecamatan';
-        $data['user'] = $this->db->get('pengguna', ['username' => $this->session->userdata('username')])->row_array();
+        $data['user'] = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);

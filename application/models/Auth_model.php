@@ -16,4 +16,10 @@ class Auth_model extends CI_Model
         return $this->db->query($query)->result_array();
         echo json_encode($query);
     }
+    public function detail($id)
+    {
+        $query = "SELECT * FROM pengguna WHERE id = $id";
+        return $this->db->query($query)->row_array();
+        echo json_encode($query);
+    }
 }

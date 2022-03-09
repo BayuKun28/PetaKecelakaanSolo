@@ -57,14 +57,75 @@ class Auth extends CI_Controller
         $data['pengguna'] = $this->auth_model->read();
 
         $this->load->view('templates/header', $data);
-        $this->load->view('templates/topbar', $data);
         $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
         $this->load->view('auth/pengguna');
+    }
+    public function FormInput()
+    {
+
+        $data['title'] = 'Form Input Pengguna';
+        $data['user'] = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('auth/input', $data);
+    }
+
+    public function tambah()
+    {
+        $data = array(
+            'username' => $this->input->post('username'),
+            'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+            'nama' => $this->input->post('nama'),
+            'level' => $this->input->post('level'),
+            'is_active' => 1
+        );
+        $this->db->insert('pengguna', $data);
+        $this->session->set_flashdata('message', 'Berhasil Ditambah');
+        redirect('Auth/pengguna');
+    }
+    public function edit()
+    {
+        $data['title'] = 'Form Edit Pengguna';
+        $data['user'] = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
+        $data['pengguna'] = $this->auth_model->detail($this->uri->segment(3));
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('auth/edit', $data);
+    }
+    public function simpanedit()
+    {
+        $id = $this->input->post('idedit');
+        $data = array(
+            'username' => $this->input->post('username'),
+            'password' =>  password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+            'nama' => $this->input->post('nama'),
+            'level' => $this->input->post('level')
+        );
+        $this->db->where('id', $id);
+        $this->db->update('pengguna', $data);
+        $this->session->set_flashdata('message', 'Berhasil Di Update');
+
+        $cekuser = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
+        if ($cekuser['id'] ==  $this->input->post('idedit')) {
+            redirect('Auth/logout');
+        } else {
+            redirect('Auth/pengguna');
+        }
+    }
+    public function delete($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('pengguna');
+        $this->session->set_flashdata('message', 'Berhasil Dihapus');
+        redirect('Auth/pengguna');
     }
     public function logout()
     {
         $this->session->unset_userdata('username');
-        $this->session->unset_userdata('role_id');
+        $this->session->unset_userdata('level');
         $this->session->unset_userdata('is_logged_in');
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You Have been LogOut.!</div>');
         redirect('/');

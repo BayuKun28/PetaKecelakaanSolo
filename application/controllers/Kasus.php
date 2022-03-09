@@ -19,7 +19,7 @@ class Kasus extends CI_Controller
     {
 
         $data['title'] = 'Data Kasus';
-        $data['user'] = $this->db->get('pengguna', ['username' => $this->session->userdata('username')])->row_array();
+        $data['user'] = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
         $xtanggalawal = $this->input->post('tglawal');
         $xtanggalakhir = $this->input->post('tglakhir');
 
@@ -43,7 +43,7 @@ class Kasus extends CI_Controller
     {
 
         $data['title'] = 'Form Input Kasus';
-        $data['user'] = $this->db->get('pengguna', ['username' => $this->session->userdata('username')])->row_array();
+        $data['user'] = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -73,7 +73,7 @@ class Kasus extends CI_Controller
         $id = $this->uri->segment(3);
         $data['kasus'] = $this->kasus_model->detail($id);
         $data['title'] = 'Form Edit Kasus';
-        $data['user'] = $this->db->get('pengguna', ['username' => $this->session->userdata('username')])->row_array();
+        $data['user'] = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);

@@ -36,7 +36,7 @@ class Rangkuman extends CI_Controller
             'daftar' => $data,
             'lokasi' => $hasil,
             'title' => $title,
-            'user' => $this->db->get('pengguna', ['username' => $this->session->userdata('username')])->row_array(),
+            'user' =>  $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array(),
             'tanggalawal' => $xtanggalawal,
             'tanggalakhir' => $xtanggalakhir
         );
