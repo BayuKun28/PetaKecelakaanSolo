@@ -41,12 +41,12 @@
                   <li><a><i class="fa fa-desktop"></i> Kasus <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="<?= base_url('Kasus'); ?>">Data Kasus</a></li>
-                      <li><a href="<?= base_url('Kasus/FormInput')  ?>">Input Kasus</a></li>
+                      <li><a href="<?= base_url('Kasus/FormInput');  ?>">Input Kasus</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-table"></i> Rangkuman <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="tables.html">Tables</a></li>
+                      <li><a href="<?= base_url('Rangkuman/peta');  ?>">Peta</a></li>
                       <li><a href="tables_dynamic.html">Table Dynamic</a></li>
                     </ul>
                   </li>

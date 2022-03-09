@@ -14,6 +14,19 @@
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
+                <div class="row">
+                    <form action="<?= base_url('Kasus') ?>" method="POST">
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" value="<?= $tanggalawal; ?>" name="tglawal" id="tglawal">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" value="<?= $tanggalakhir; ?>" name="tglakhir" id="tglakhir">
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-success"> Tampilkan </button>
+                        </div>
+                    </form>
+                </div>
                 <div class="row col-md-12">
                     <div class="table-responsive">
                         <table class="table table-striped table-hover" id="tabledata">
@@ -64,6 +77,13 @@
     $(document).ready(function() {
         $('#tabledata').DataTable({
             responsive: true
+        });
+        var dateNow = new Date();
+        $("#tglawal").datetimepicker({
+            format: "Y-m-d H:i:s"
+        });
+        $("#tglakhir").datetimepicker({
+            format: "Y-m-d H:i:s"
         });
 
         $(document).on('click', '.del_kasus', function(event) {

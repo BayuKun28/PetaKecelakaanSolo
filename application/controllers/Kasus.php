@@ -17,7 +17,19 @@ class Kasus extends CI_Controller
 
         $data['title'] = 'Data Kasus';
         $data['user'] = $this->db->get('pengguna', ['username' => $this->session->userdata('username')])->row_array();
-        $data['kasus'] = $this->kasus_model->read();
+        $xtanggalawal = $this->input->post('tglawal');
+        $xtanggalakhir = $this->input->post('tglakhir');
+
+        if (!empty($xtanggalawal) && !empty($xtanggalakhir)) {
+            $xtanggalawal = $this->input->post('tglawal');
+            $xtanggalakhir = $this->input->post('tglakhir');
+        } else {
+            $xtanggalawal = date('Y-m-d 00:00:00');
+            $xtanggalakhir = date('Y-m-d H:i:s', strtotime('+1 days'));
+        }
+        $data['tanggalawal'] = $xtanggalawal;
+        $data['tanggalakhir'] = $xtanggalakhir;
+        $data['kasus'] = $this->kasus_model->readfilter($xtanggalawal, $xtanggalakhir);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
