@@ -31,7 +31,7 @@
                                         <td><?= $i; ?></td>
                                         <td><?= $s['nama_kecamatan']; ?></td>
                                         <td>
-                                            <a data-toggle="modal" data-target="#modaltambah" data-idedit="<?= $s['id']; ?>" data-namaedit="<?= $s['nama_kecamatan']; ?>" class=" btn btn-success" name="editkecamatan" id="editkecamatan"><i class="fa fa-pencil"></i></a>
+                                            <a data-toggle="modal" data-target="#modaledit" data-idedit="<?= $s['id']; ?>" data-namaedit="<?= $s['nama_kecamatan']; ?>" class=" btn btn-success" name="editkecamatan" id="editkecamatan"><i class="fa fa-pencil"></i></a>
                                             <a href="<?= base_url('Kecamatan'); ?>" href='javascript:void(0)' class="del_kecamatan btn btn-danger" data-toggle="tooltip" data-placement="left" title="Hapus" data-kode="<?= $s['id']; ?>"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
@@ -48,7 +48,7 @@
     </div>
 </div>
 
-<div class="modal" tabindex="-1" role="dialog" id="modaltambah">
+<div class="modal" tabindex="-1" role="dialog" id="modaledit">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

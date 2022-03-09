@@ -26,6 +26,7 @@
                                     <th>Jenis</th>
                                     <th>Jumlah</th>
                                     <th>Tanggal</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,6 +40,10 @@
                                         <td><?= $s['jenis']; ?></td>
                                         <td><?= $s['jumlah']; ?></td>
                                         <td><?= $s['tanggal']; ?></td>
+                                        <td>
+                                            <a href="<?= base_url('Kasus/Edit/') . $s['id']; ?>" class=" btn btn-success" name="editkasus" id="editkasus"><i class="fa fa-pencil"></i></a>
+                                            <a href='javascript:void(0)' data-kode="<?= $s['id']; ?>" class="del_kasus btn btn-danger" name="hapuskasus" id="hapuskasus"><i class="fa fa-trash"></i></a>
+                                        </td>
                                     </tr>
                                     <?php $i++; ?>
                                 <?php endforeach ?>
@@ -52,12 +57,34 @@
         </div>
     </div>
 </div>
+
 <?php $this->load->view('templates/footer'); ?>
 
 <script type="text/javascript">
     $(document).ready(function() {
         $('#tabledata').DataTable({
             responsive: true
+        });
+
+        $(document).on('click', '.del_kasus', function(event) {
+            event.preventDefault();
+            let kode = $(this).attr('data-kode');
+            let delete_url = "<?= base_url(); ?>/Kasus/delete/" + kode;
+
+            Swal.fire({
+                title: 'Hapus Data',
+                text: "Apakah Anda Yakin Ingin Menghapus Data Ini?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Hapus',
+                cancelButtonText: 'Batal'
+            }).then(async (result) => {
+                if (result.value) {
+                    window.location.href = delete_url;
+                }
+            });
         });
     });
 </script>
