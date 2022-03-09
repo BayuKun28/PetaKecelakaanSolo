@@ -1,5 +1,8 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
+// defined('BASEPATH') or exit('No direct script access allowed');
+require_once 'vendor/autoload.php';
+
+use Dompdf\Dompdf as Dompdf;
 
 class Kasus extends CI_Controller
 {
@@ -102,5 +105,23 @@ class Kasus extends CI_Controller
         $this->db->delete('kasus');
         $this->session->set_flashdata('message', 'Berhasil Dihapus');
         redirect('Kasus');
+    }
+
+    public function cetak()
+    {
+        $data['title'] = 'Laporan Kasus';
+        $xtanggalawal = $this->input->get('tglawal');
+        $xtanggalakhir = $this->input->get('tglakhir');
+
+        $data['tanggalawal'] = date('d F Y', strtotime($xtanggalawal));
+        $data['tanggalakhir'] = date('d F Y', strtotime($xtanggalakhir));
+        $data['kasus'] = $this->kasus_model->readfilter($xtanggalawal, $xtanggalakhir);
+
+        $dompdf = new Dompdf();
+        $dompdf->setPaper('A4', 'Portrait');
+        $html = $this->load->view('kasus/cetak', $data, true);
+        $dompdf->load_html($html);
+        $dompdf->render();
+        $dompdf->stream('Laporan Data Kasus ', array("Attachment" => false));
     }
 }

@@ -27,7 +27,9 @@
                         </div>
                         <div class="col-md-3">
                             <button type="submit" class="btn btn-success"> Tampilkan </button>
+                            <a href="<?= base_url('Kasus/cetak?tglawal=') . $tanggalawal . '&tglakhir=' . $tanggalakhir; ?>" name="cetak" class="btn btn-danger btn-col-1" target="_blank" role="button" aria-disabled="true"><i class="fa fa-book fa-fw"></i>Cetak</a>
                         </div>
+
                     </form>
                 </div>
                 <div class="row col-md-12">
