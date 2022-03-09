@@ -13,11 +13,14 @@
                 </ul>
                 <div class="clearfix"></div>
                 <div class="row">
-                    <form action="<?= base_url('Rangkuman/peta') ?>" method="POST">
-                        <div class="col-md-4">
+                    <form action="<?= base_url('Rangkuman/peta') ?>" method="POST" class="row col-md-12">
+                        <div class="col-md-2">
                             <input type="text" class="form-control" value="<?= $tanggalawal; ?>" name="tglawal" id="tglawal">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-1">
+                            <center><input type="text" class="form-control" value="S/D" readonly></center>
+                        </div>
+                        <div class="col-md-2">
                             <input type="text" class="form-control" value="<?= $tanggalakhir; ?>" name="tglakhir" id="tglakhir">
                         </div>
                         <div class="col-md-3">
