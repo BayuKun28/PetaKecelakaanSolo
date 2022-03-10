@@ -4,7 +4,7 @@
     <div class="col-md-12 col-sm-12  ">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Rangkuman / Diagram Pie</h2>
+                <h2>Rangkuman / Chart</h2>
                 <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
@@ -36,7 +36,7 @@
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
-                                <canvas id="container"></canvas>
+                                <div id="container"></div>
                             </div>
                         </div>
                     </div>
@@ -46,41 +46,49 @@
     </div>
 </div>
 <?php $this->load->view('templates/footer'); ?>
-<?php
-//Inisialisasi nilai variabel awal
-$nama_kecamatan = "";
-$jumlah = null;
-foreach ($graph as $item) {
-    $kec = $item->nama_kecamatan;
-    $nama_kecamatan .= "'$kec'" . ", ";
-    $jum = $item->jumlahkasus;
-    $jumlah .= "$jum" . ", ";
-}
-?>
-<script>
-    var ctx = document.getElementById('container').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'pie',
-        // The data for our dataset
-        data: {
-            labels: [<?php echo $nama_kecamatan; ?>],
-            datasets: [{
-                label: 'Data Kasus Kecelakaan ',
-                backgroundColor: ['rgb(255, 0, 0)', 'rgba(0, 102, 255)', 'rgb(0, 204, 0)', 'rgb(255, 255, 0)', 'rgb(204, 204, 0)'],
-                borderColor: ['rgb(255, 99, 132)'],
-                data: [<?php echo $jumlah; ?>]
-            }]
-        },
-        // Configuration options go here
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
+<script src="<?= base_url('assets/') ?>js/highcharts.js"></script>
+
+<script type="text/javascript">
+    $(function() {
+        $('#container').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Data Kasus Bulan Ini'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
                     }
-                }]
-            }
-        }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Jumlah Kasus',
+                data: [
+                    <?php
+                    // data yang diambil dari database
+                    if (count($graph) > 0) {
+                        foreach ($graph as $data) {
+                            echo "['" . $data->nama_kecamatan . "'," . $data->jumlahkasus . "],\n";
+                        }
+                    }
+                    ?>
+                ]
+            }]
+        });
     });
 </script>
