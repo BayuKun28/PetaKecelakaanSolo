@@ -7,6 +7,7 @@ class Rangkuman extends CI_Controller
     {
         parent::__construct();
         $this->load->model('kasus_model');
+        $this->load->model('rangkuman_model');
 
         if (!$this->session->userdata('is_logged_in')) {
             redirect('/');
@@ -45,5 +46,16 @@ class Rangkuman extends CI_Controller
         $this->load->view('templates/sidebar', $this->map);
         $this->load->view('templates/topbar', $this->map);
         $this->load->view('rangkuman/peta', $this->map);
+    }
+    public function chart()
+    {
+        $data['title'] = 'Rangkuman / Chart';
+        $data['user'] = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
+
+        $data['graph'] = $this->rangkuman_model->read();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('rangkuman/chart', $data);
     }
 }

@@ -44,6 +44,7 @@
   <link href="<?= base_url('assets/') ?>vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
   <link href="<?= base_url('assets/') ?>vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise"></script>
+
   <style type="text/css">
     #map {
       height: 100vh;
