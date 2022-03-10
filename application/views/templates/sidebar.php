@@ -48,6 +48,7 @@
                     <ul class="nav child_menu">
                       <li><a href="<?= base_url('Rangkuman/peta');  ?>">Peta</a></li>
                       <li><a href="<?= base_url('Rangkuman/chart');  ?>">Chart</a></li>
+                      <li><a href="<?= base_url('Rangkuman/batang');  ?>">Diagram Batang</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-user"></i> Pengguna <span class="fa fa-chevron-down"></span></a>

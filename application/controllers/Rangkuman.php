@@ -58,4 +58,15 @@ class Rangkuman extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('rangkuman/chart', $data);
     }
+    public function batang()
+    {
+        $data['title'] = 'Rangkuman / Diagram Batang';
+        $data['user'] = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
+
+        $data['graph'] = $this->rangkuman_model->read();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('rangkuman/batang', $data);
+    }
 }
