@@ -16,6 +16,22 @@
             <div class="x_content">
                 <div class="clearfix"></div>
                 <div class="row">
+                    <form action="<?= base_url('Rangkuman/batang') ?>" method="POST" class="row col-md-12 p-3">
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" value="<?= $tanggalawal; ?>" name="tglawal" id="tglawal">
+                        </div>
+                        <div class="col-md-1">
+                            <center><input type="text" class="form-control" value="S/D" readonly></center>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" value="<?= $tanggalakhir; ?>" name="tglakhir" id="tglakhir">
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-success"> Tampilkan </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
                     <div class="col-md-12 col-sm-12  ">
                         <div class="x_panel">
                             <div class="x_title">
@@ -58,6 +74,15 @@ foreach ($graph as $item) {
 }
 ?>
 <script>
+    $(document).ready(function() {
+        var dateNow = new Date();
+        $("#tglawal").datetimepicker({
+            format: "Y-m-d H:i:s"
+        });
+        $("#tglakhir").datetimepicker({
+            format: "Y-m-d H:i:s"
+        });
+    });
     var ctx = document.getElementById('container').getContext('2d');
     var chart = new Chart(ctx, {
         // The type of chart we want to create
