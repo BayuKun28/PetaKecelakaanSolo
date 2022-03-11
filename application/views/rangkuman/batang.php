@@ -32,10 +32,10 @@
                     </form>
                 </div>
                 <div class="row">
-                    <div class="col-md-12 col-sm-12  ">
+                    <div class="col-md-12 col-sm-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Chart Diagram</h2>
+                                <h2>Chart Pie</h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                     </li>
@@ -51,8 +51,10 @@
                                 </ul>
                                 <div class="clearfix"></div>
                             </div>
-                            <div class="x_content">
-                                <canvas id="container"></canvas>
+                            <div class="row justify-content-center">
+                                <div class="x_content col-md-8 col-sm-8 ">
+                                    <canvas id="container"></canvas>
+                                </div>
                             </div>
                         </div>
                     </div>
