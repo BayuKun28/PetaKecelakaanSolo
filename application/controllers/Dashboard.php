@@ -25,7 +25,7 @@ class Dashboard extends CI_Controller
             $xtanggalawal = $this->input->post('tglawal');
             $xtanggalakhir = $this->input->post('tglakhir');
         } else {
-            $xtanggalawal = date('Y-m-d 00:00:00');
+            $xtanggalawal = date('Y-m-01 00:00:00');
             $xtanggalakhir = date('Y-m-d H:i:s', strtotime('+1 days'));
         }
         $data['tanggalawal'] = $xtanggalawal;

@@ -39,7 +39,6 @@
         </div>
         <div class="x_content">
             <div class="clearfix"></div>
-
             <div class="row">
                 <div class="col-md-6 col-sm-6  ">
                     <div class="x_panel">
