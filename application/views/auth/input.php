@@ -94,6 +94,17 @@ if (!empty($this->session->flashdata('message'))) {
                             }) 
                     </script>
                 ";
+    } elseif ($pesan == "Username Sudah Ada") {
+        // die($pesan);
+        $script = "
+                            <script>
+                                    Swal.fire({
+                                      icon: 'error',
+                                      title: 'Data',
+                                      text: 'Username Sudah Ada'
+                                    }) 
+                            </script>
+                        ";
     } else {
         $script =
             "

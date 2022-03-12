@@ -74,16 +74,23 @@ class Auth extends CI_Controller
 
     public function tambah()
     {
-        $data = array(
-            'username' => $this->input->post('username'),
-            'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-            'nama' => $this->input->post('nama'),
-            'level' => $this->input->post('level'),
-            'is_active' => 1
-        );
-        $this->db->insert('pengguna', $data);
-        $this->session->set_flashdata('message', 'Berhasil Ditambah');
-        redirect('Auth/pengguna');
+        $username = $this->input->post('username');
+        $cekusername = $this->auth_model->cekusername($username);
+        if ($cekusername > 0) {
+            $this->session->set_flashdata('message', 'Username Sudah Ada');
+            redirect('Auth/FormInput');
+        } else {
+            $data = array(
+                'username' => $this->input->post('username'),
+                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'nama' => $this->input->post('nama'),
+                'level' => $this->input->post('level'),
+                'is_active' => 1
+            );
+            $this->db->insert('pengguna', $data);
+            $this->session->set_flashdata('message', 'Berhasil Ditambah');
+            redirect('Auth/pengguna');
+        }
     }
     public function edit()
     {

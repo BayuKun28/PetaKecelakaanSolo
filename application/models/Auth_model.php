@@ -23,4 +23,10 @@ class Auth_model extends CI_Model
         return $this->db->query($query)->row_array();
         echo json_encode($query);
     }
+    public function cekusername($username)
+    {
+        $query = "SELECT * FROM pengguna WHERE username = '$username' ";
+        return $this->db->query($query)->num_rows();
+        echo json_encode($query);
+    }
 }
