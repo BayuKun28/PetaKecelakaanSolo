@@ -10,6 +10,9 @@ class Kecamatan extends CI_Controller
         if (!$this->session->userdata('is_logged_in')) {
             redirect('/');
         }
+        if ($this->session->userdata('level') !== '1') {
+            redirect('auth/blocked', 'refresh');
+        }
     }
     public function index()
     {

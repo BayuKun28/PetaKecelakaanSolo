@@ -12,6 +12,9 @@ class Rangkuman extends CI_Controller
         if (!$this->session->userdata('is_logged_in')) {
             redirect('/');
         }
+        if ($this->session->userdata('level') !== '1' && $this->session->userdata('level') !== '2') {
+            redirect('auth/blocked', 'refresh');
+        }
     }
     public function peta()
     {

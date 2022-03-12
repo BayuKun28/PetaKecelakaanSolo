@@ -52,6 +52,9 @@ class Auth extends CI_Controller
     }
     public function pengguna()
     {
+        if ($this->session->userdata('level') !== '1') {
+            redirect('auth/blocked', 'refresh');
+        }
         $data['title'] = 'Pengguna';
         $data['user'] = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
         $data['pengguna'] = $this->auth_model->read();
@@ -63,6 +66,9 @@ class Auth extends CI_Controller
     }
     public function FormInput()
     {
+        if ($this->session->userdata('level') !== '1') {
+            redirect('auth/blocked', 'refresh');
+        }
 
         $data['title'] = 'Form Input Pengguna';
         $data['user'] = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
@@ -74,6 +80,9 @@ class Auth extends CI_Controller
 
     public function tambah()
     {
+        if ($this->session->userdata('level') !== '1') {
+            redirect('auth/blocked', 'refresh');
+        }
         $username = $this->input->post('username');
         $cekusername = $this->auth_model->cekusername($username);
         if ($cekusername > 0) {
@@ -94,6 +103,9 @@ class Auth extends CI_Controller
     }
     public function edit()
     {
+        if ($this->session->userdata('level') !== '1') {
+            redirect('auth/blocked', 'refresh');
+        }
         $data['title'] = 'Form Edit Pengguna';
         $data['user'] = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
         $data['pengguna'] = $this->auth_model->detail($this->uri->segment(3));
@@ -104,6 +116,9 @@ class Auth extends CI_Controller
     }
     public function simpanedit()
     {
+        if ($this->session->userdata('level') !== '1') {
+            redirect('auth/blocked', 'refresh');
+        }
         $id = $this->input->post('idedit');
         $data = array(
             'username' => $this->input->post('username'),
@@ -124,6 +139,9 @@ class Auth extends CI_Controller
     }
     public function delete($id)
     {
+        if ($this->session->userdata('level') !== '1') {
+            redirect('auth/blocked', 'refresh');
+        }
         $this->db->where('id', $id);
         $this->db->delete('pengguna');
         $this->session->set_flashdata('message', 'Berhasil Dihapus');
@@ -141,12 +159,6 @@ class Auth extends CI_Controller
     public function blocked()
     {
         $data['title'] = 'Acces Blocked';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
         $this->load->view('auth/blocked', $data);
-        $this->load->view('templates/footer', $data);
     }
 }
