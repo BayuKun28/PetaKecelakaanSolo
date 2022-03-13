@@ -11,7 +11,7 @@
                     <img src="<?= base_url('assets/'); ?>images/default.png" alt=""><?= $user['nama']; ?>
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="javascript:;"> Profile</a>
+                    <a class="dropdown-item" href="<?= base_url('Auth/profile/') . $user['id']; ?>"> Profile</a>
                     <a class="dropdown-item" href="<?= base_url('Auth/logout'); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                   </div>
                 </li>

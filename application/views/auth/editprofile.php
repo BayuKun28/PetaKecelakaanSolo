@@ -14,7 +14,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
-                <form method="post" action="<?= base_url('Auth/simpanedit'); ?>">
+                <form method="post" action="<?= base_url('Auth/simpanprofile'); ?>">
                     <div class="row">
                         <div class="col">
                             <div class="form-group">

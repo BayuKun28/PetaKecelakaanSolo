@@ -156,6 +156,35 @@ class Auth extends CI_Controller
         redirect('/');
     }
 
+    public function profile()
+    {
+        $data['title'] = 'Profil';
+        $data['user'] = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
+        $data['pengguna'] = $this->auth_model->detail($this->uri->segment(3));
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('auth/editprofile', $data);
+    }
+    public function simpanprofile()
+    {
+        $id = $this->input->post('idedit');
+        $data = array(
+            'username' => $this->input->post('username'),
+            'password' =>  password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+            'nama' => $this->input->post('nama'),
+            'level' => $this->input->post('level')
+        );
+        $this->db->where('id', $id);
+        $this->db->update('pengguna', $data);
+        $this->session->set_flashdata('message', 'a');
+        $this->session->unset_userdata('username');
+        $this->session->unset_userdata('level');
+        $this->session->unset_userdata('is_logged_in');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Sukses Update Profile, Silahkan Login Ulang</div>');
+        redirect('/');
+    }
+
     public function blocked()
     {
         $data['title'] = 'Acces Blocked';
