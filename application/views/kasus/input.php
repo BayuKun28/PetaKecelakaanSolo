@@ -28,7 +28,7 @@
               <div class="form-group">
                 <label>Nama Kecamatan</label>
                 <div class="row">
-                  <div class="col-md-10">
+                  <div class="col-md-12">
                     <select class="form-control itemKecamatan" id="kecamatan" name="kecamatan" required>
                     </select>
                   </div>
@@ -102,7 +102,8 @@
   $(document).ready(function() {
     var dateNow = new Date();
     $("#tanggal").datetimepicker({
-      format: "Y-m-d H:i:s"
+      format: "Y-m-d H:i:s",
+      autoclose: true
     });
 
     $('.itemKecamatan').select2({

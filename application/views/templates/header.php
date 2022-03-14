@@ -10,7 +10,8 @@
   <link rel="icon" href="<?= base_url('assets/') ?>images/favicon.png" type="image" />
 
   <title><?= $title; ?></title>
-
+  
+  <link href="<?= base_url('assets/') ?>css/select2.min.css" rel="stylesheet" />
   <!-- Bootstrap -->
   <link href="<?= base_url('assets/'); ?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome -->
@@ -34,8 +35,6 @@
   <script src="<?= base_url(); ?>/assets/leaflet/leaflet.js"></script>
 
   <link href="<?= base_url('assets/') ?>js/sweetalert/dist/sweetalert2.min.css" rel="stylesheet">
-
-  <link href="<?= base_url('assets/') ?>css/select2.min.css" rel="stylesheet" />
 
   <link href="<?= base_url('assets/') ?>datepicker/jquery.datetimepicker.css" rel="stylesheet">
   <link href="<?= base_url('assets/') ?>vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
