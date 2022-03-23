@@ -36,7 +36,7 @@ class Auth extends CI_Controller
                         'is_logged_in' => TRUE
                     ];
                     $this->session->set_userdata($data);
-                    redirect('dashboard');
+                    redirect('Dashboard');
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong Password.!</div>');
                     redirect('auth');
