@@ -58,10 +58,10 @@
                 <label>Titik Koordinat</label>
                 <div class="row">
                   <div class="col-md-6">
-                    <input type="text" name="lat" id="lat" value="" class="form-control" required>
+                    <input type="text" name="lat" id="lat" value="" class="form-control" onkeyup="otomatis()" required>
                   </div>
                   <div class="col-md-6">
-                    <input type="text" name="lng" id="lng" value="" class="form-control" required>
+                    <input type="text" name="lng" id="lng" value="" class="form-control" onkeyup="otomatis()" required>
                   </div>
                 </div>
               </div>
@@ -193,6 +193,27 @@
       }
     })
   });
+
+  function otomatis() {
+    var lat = document.getElementById('lat').value;
+    var lng = document.getElementById('lng').value;
+
+    if (theMarker != undefined) {
+      map.removeLayer(theMarker);
+    };
+    theMarker = L.marker([lat, lng]).addTo(map);
+    $.ajax({
+      url: "https://nominatim.openstreetmap.org/reverse",
+      data: "lat=" + lat +
+        "&lon=" + lng +
+        "&format=json",
+      dataType: "JSON",
+      success: function(data) {
+        // console.log(data);
+        document.getElementById('lokasi').value = data.display_name;
+      }
+    })
+  }
 </script>
 <?php
 if (!empty($this->session->flashdata('message'))) {
