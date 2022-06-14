@@ -45,6 +45,12 @@
                         <center>
                             <h3>Rangkuman </h3>
                             <table  width="100%">
+                                <thead>
+                                        <tr>
+                                            <td colspan="4" ><b>TOTAL KECELAKAAN : <?= $total['totalkasus']; ?> </b></td>
+                                            <td colspan="4" ></td>
+                                        </tr>
+                                </thead>
                                 <tbody>
                                     <?php $i = 1; ?>
                                     <?php foreach ($kecamatan as $b) : ?>

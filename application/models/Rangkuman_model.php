@@ -13,4 +13,13 @@ class Rangkuman_model extends CI_Model
         return $this->db->query($query)->result();
         echo json_encode($query);
     }
+    public function total($tglawal, $tglakhir)
+    {
+        $query = "SELECT SUM(k.jumlah) as totalkasus
+        FROM kecamatan kec
+        LEFT JOIN kasus k on kec.id = k.kecamatan
+        WHERE k.tanggal BETWEEN '$tglawal' AND '$tglakhir' ";
+        return $this->db->query($query)->row_array();
+        echo json_encode($query);
+    }
 }

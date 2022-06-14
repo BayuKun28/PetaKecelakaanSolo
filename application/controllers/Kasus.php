@@ -122,6 +122,7 @@ class Kasus extends CI_Controller
         $data['kasus'] = $this->kasus_model->readfilter($xtanggalawal, $xtanggalakhir);
 
         $data['kecamatan'] = $this->rangkuman_model->read($xtanggalawal, $xtanggalakhir);
+        $data['total'] = $this->rangkuman_model->total($xtanggalawal, $xtanggalakhir);
 
         $dompdf = new Dompdf();
         $dompdf->setPaper('A4', 'Portrait');
