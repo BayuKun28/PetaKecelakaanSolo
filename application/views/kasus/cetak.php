@@ -7,7 +7,7 @@
                         <center>
                             <h3>Laporan Data Kasus </h3>
                             <h4> <?= $tanggalawal; ?> s/d <?= $tanggalakhir; ?></h4>
-                            <table border="1" width="100%">
+                            <table border="1" width="100%" style="border-collapse:collapse;">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -30,6 +30,29 @@
                                             <td><?= $s['jenis']; ?></td>
                                             <td><?= $s['jumlah']; ?></td>
                                             <td><?= $s['tanggal']; ?></td>
+                                        </tr>
+                                        <?php $i++; ?>
+                                    <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+
+                <div class="row col-md-12">
+                    <div class="table-responsive">
+                        <center>
+                            <h3>Rangkuman </h3>
+                            <table  width="100%">
+                                <tbody>
+                                    <?php $i = 1; ?>
+                                    <?php foreach ($kecamatan as $b) : ?>
+                                        <tr>
+                                            <td width="2%" ><?= $i; ?>.</td>
+                                            <td width="20%"><?= $b->nama_kecamatan; ?></td>
+                                            <td width="2%">:</td>
+                                            <td width="70%"><?= $b->jumlahkasus; ?> Kasus</td>
                                         </tr>
                                         <?php $i++; ?>
                                     <?php endforeach ?>

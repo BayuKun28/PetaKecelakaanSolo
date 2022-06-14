@@ -5,7 +5,7 @@ class Rangkuman_model extends CI_Model
 {
     public function read($tglawal, $tglakhir)
     {
-        $query = "SELECT COUNT(k.jumlah) as jumlahkasus,kec.nama_kecamatan
+        $query = "SELECT SUM(k.jumlah) as jumlahkasus,kec.nama_kecamatan
         FROM kecamatan kec
         LEFT JOIN kasus k on kec.id = k.kecamatan
         WHERE k.tanggal BETWEEN '$tglawal' AND '$tglakhir'

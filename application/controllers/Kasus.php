@@ -10,6 +10,7 @@ class Kasus extends CI_Controller
     {
         parent::__construct();
         $this->load->model('kasus_model');
+        $this->load->model('rangkuman_model');
         if (!$this->session->userdata('is_logged_in')) {
             redirect('/');
         }
@@ -119,6 +120,8 @@ class Kasus extends CI_Controller
         $data['tanggalawal'] = date('d F Y', strtotime($xtanggalawal));
         $data['tanggalakhir'] = date('d F Y', strtotime($xtanggalakhir));
         $data['kasus'] = $this->kasus_model->readfilter($xtanggalawal, $xtanggalakhir);
+
+        $data['kecamatan'] = $this->rangkuman_model->read($xtanggalawal, $xtanggalakhir);
 
         $dompdf = new Dompdf();
         $dompdf->setPaper('A4', 'Portrait');
