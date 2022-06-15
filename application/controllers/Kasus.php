@@ -119,6 +119,7 @@ class Kasus extends CI_Controller
 
         $data['tanggalawal'] = date('d F Y', strtotime($xtanggalawal));
         $data['tanggalakhir'] = date('d F Y', strtotime($xtanggalakhir));
+        $data['hariini'] = date('d F Y');
         $data['kasus'] = $this->kasus_model->readfilter($xtanggalawal, $xtanggalakhir);
 
         $data['kecamatan'] = $this->rangkuman_model->read($xtanggalawal, $xtanggalakhir);

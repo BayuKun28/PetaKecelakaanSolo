@@ -5,8 +5,9 @@
                 <div class="row col-md-12">
                     <div class="table-responsive">
                         <center>
-                            <h3>Laporan Data Kasus </h3>
-                            <h4> <?= $tanggalawal; ?> s/d <?= $tanggalakhir; ?></h4>
+                            <h3>Laporan Data</h3>
+                            <h3>Kasus Kecelakaan Lalu Lintas Di Kota Surakarta</h3>
+                            <h4>Periode <?= $tanggalawal; ?> s/d <?= $tanggalakhir; ?></h4>
                             <table border="1" width="100%" style="border-collapse:collapse;">
                                 <thead>
                                     <tr>
@@ -46,10 +47,10 @@
                             <h3>Rangkuman </h3>
                             <table  width="100%">
                                 <thead>
-                                        <tr>
-                                            <td colspan="4" ><b>TOTAL KECELAKAAN : <?= $total['totalkasus']; ?> </b></td>
-                                            <td colspan="4" ></td>
-                                        </tr>
+                                    <tr>
+                                        <td colspan="4" ><b>TOTAL KECELAKAAN : <?= $total['totalkasus']; ?> </b></td>
+                                        <td colspan="4" ></td>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     <?php $i = 1; ?>
@@ -67,9 +68,15 @@
                         </center>
                     </div>
                     <!-- /.table-responsive -->
+                    <div style="width: 35%; text-align: center; float: right;">Surakarta, <?= $hariini; ?> <br>
+                        KANIT GAKKUM, <br> <br> <br> <br>
+                        <u>SUHARTO, SH</u> <br>
+                        IPTU NRP 69060262
+                    </div><br><br><br><br><br><br>
                 </div>
             </div>
-
         </div>
+
     </div>
+</div>
 </div>
