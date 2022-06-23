@@ -62,7 +62,7 @@ class Kasus extends CI_Controller
             'lokasi' => $this->input->post('lokasi'),
             'keterangan' => $this->input->post('keterangan'),
             'jenis' => $this->input->post('jenis'),
-            'jumlah' => $this->input->post('jumlah'),
+            'jumlah' => 1,
             'lat' => $this->input->post('lat'),
             'lng' => $this->input->post('lng'),
             'tanggal' => date('Y-m-d H:i:s', strtotime($xtgl))
@@ -93,7 +93,7 @@ class Kasus extends CI_Controller
             'lokasi' => $this->input->post('lokasi'),
             'keterangan' => $this->input->post('keterangan'),
             'jenis' => $this->input->post('jenis'),
-            'jumlah' => $this->input->post('jumlah'),
+            'jumlah' => 1,
             'lat' => $this->input->post('lat'),
             'lng' => $this->input->post('lng'),
             'tanggal' => date('Y-m-d H:i:s', strtotime($xtgl))

@@ -42,7 +42,6 @@
                                     <th>Lokasi</th>
                                     <th>Keterangan</th>
                                     <th>Jenis</th>
-                                    <th>Jumlah</th>
                                     <th>Tanggal</th>
                                     <th>Actions</th>
                                 </tr>
@@ -56,7 +55,6 @@
                                         <td><?= $s['lokasi']; ?></td>
                                         <td><?= $s['keterangan']; ?></td>
                                         <td><?= $s['jenis']; ?></td>
-                                        <td><?= $s['jumlah']; ?></td>
                                         <td><?= $s['tanggal']; ?></td>
                                         <td>
                                             <a href="<?= base_url('Kasus/Edit/') . $s['id']; ?>" class=" btn btn-success" name="editkasus" id="editkasus"><i class="fa fa-pencil"></i></a>

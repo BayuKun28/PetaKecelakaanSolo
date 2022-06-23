@@ -16,7 +16,6 @@
                                         <th>Lokasi</th>
                                         <th>Keterangan</th>
                                         <th>Jenis</th>
-                                        <th>Jumlah</th>
                                         <th>Tanggal</th>
                                     </tr>
                                 </thead>
@@ -29,7 +28,6 @@
                                             <td><?= $s['lokasi']; ?></td>
                                             <td><?= $s['keterangan']; ?></td>
                                             <td><?= $s['jenis']; ?></td>
-                                            <td><?= $s['jumlah']; ?></td>
                                             <td><?= $s['tanggal']; ?></td>
                                         </tr>
                                         <?php $i++; ?>

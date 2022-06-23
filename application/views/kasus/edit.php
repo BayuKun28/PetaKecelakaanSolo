@@ -47,10 +47,6 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label>Jumlah Kasus</label>
-                                        <input type="number" name="jumlah" id="jumlah" value="<?= $kasus['jumlah']; ?>" class="form-control">
-                                    </div>
-                                    <div class="col-md-6">
                                         <label>Tanggal</label>
                                         <input type="text" name="tanggal" id="tanggal" value="<?= $kasus['tanggal']; ?>" autocomplete="off" class="form-control" required>
                                     </div>

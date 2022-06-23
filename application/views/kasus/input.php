@@ -45,10 +45,6 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-md-6">
-                    <label>Jumlah Kasus</label>
-                    <input type="number" name="jumlah" id="jumlah" value="1" class="form-control">
-                  </div>
-                  <div class="col-md-6">
                     <label>Tanggal</label>
                     <input type="text" name="tanggal" id="tanggal" autocomplete="off" class="form-control" required>
                   </div>

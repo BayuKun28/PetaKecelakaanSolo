@@ -210,7 +210,7 @@ foreach ($graph as $item) {
     var array = [];
     for (var i = 0; i < locations.length; i++) {
         marker = new L.marker([locations[i][1], locations[i][2]])
-            .bindPopup("Lokasi:" + locations[i][4] + "<br>Keterangan:" + locations[i][3] + "<br>Jumlah Kecelakaan :" + locations[i][0]);
+            .bindPopup("Lokasi:" + locations[i][4] + "<br>Keterangan:" + locations[i][3]);
         array.push(marker);
     }
     var layerGroup = L.featureGroup(array).addTo(mymap);
