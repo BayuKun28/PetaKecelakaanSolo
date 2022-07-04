@@ -22,6 +22,8 @@
         <script src="<?= base_url('assets/') ?>vendors/nprogress/nprogress.js"></script>
         <!-- Chart.js -->
         <script src="<?= base_url('assets/') ?>vendors/Chart.js/dist/Chart.min.js"></script>
+        <script src="<?= base_url('assets/') ?>highcharts.js"></script>
+        <!-- <script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
         <!-- gauge.js -->
         <script src="<?= base_url('assets/') ?>vendors/gauge.js/dist/gauge.min.js"></script>
         <!-- bootstrap-progressbar -->

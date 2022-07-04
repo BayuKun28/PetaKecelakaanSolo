@@ -53,7 +53,7 @@
                             </div>
                             <div class="row justify-content-center">
                                 <div class="x_content col-md-8 col-sm-8 ">
-                                    <canvas id="container"></canvas>
+                                    <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
                                 </div>
                             </div>
                         </div>
@@ -85,29 +85,74 @@ foreach ($graph as $item) {
             format: "Y-m-d H:i:s"
         });
     });
-    var ctx = document.getElementById('container').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'pie',
-        // The data for our dataset
-        data: {
-            labels: [<?php echo $nama_kecamatan; ?>],
-            datasets: [{
-                label: 'Data Kasus Kecelakaan ',
-                backgroundColor: ['rgb(255, 0, 0)', 'rgba(0, 102, 255)', 'rgb(0, 204, 0)', 'rgb(255, 255, 0)', 'rgb(204, 204, 0)'],
-                borderColor: ['rgb(255, 99, 132)'],
-                data: [<?php echo $jumlah; ?>]
-            }]
-        },
-        // Configuration options go here
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
+    // var ctx = document.getElementById('container').getContext('2d');
+    // var chart = new Chart(ctx, {
+    //     // The type of chart we want to create
+    //     type: 'pie',
+    //     // The data for our dataset
+    //     data: {
+    //         labels: [<?php echo $nama_kecamatan; ?>],
+    //         datasets: [{
+    //             label: 'Data Kasus Kecelakaan ',
+    //             backgroundColor: ['rgb(255, 0, 0)', 'rgba(0, 102, 255)', 'rgb(0, 204, 0)', 'rgb(255, 255, 0)', 'rgb(204, 204, 0)'],
+    //             borderColor: ['rgb(255, 99, 132)'],
+    //             data: [<?php echo $jumlah; ?>]
+    //         }]
+    //     },
+    //     // Configuration options go here
+    //     options: {
+    //         scales: {
+    //             yAxes: [{
+    //                 ticks: {
+    //                     beginAtZero: true
+    //                 }
+    //             }]
+    //         },
+
+    //     }
+    // });
+
+    $(function () {
+        $('#container').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Data Kecelakaan Pie'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
                     }
-                }]
-            }
-        }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Persentase Kecelakaan',
+                data: [
+                <?php 
+                    // data yang diambil dari database
+                if(count($graph)>0)
+                {
+                 foreach ($graph as $data) {
+                     echo "['" .$data->nama_kecamatan . "'," . $data->jumlahkasus ."],\n";
+                 }
+             }
+             ?>
+             ]
+         }]
+     });
     });
 </script>
