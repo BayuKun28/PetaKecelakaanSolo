@@ -29,6 +29,7 @@ class Dashboard extends CI_Controller
         }
 
         $graph = $this->rangkuman_model->read($xtanggalawal, $xtanggalakhir);
+        $status = $this->rangkuman_model->status($xtanggalawal, $xtanggalakhir);
         $data = $this->kasus_model->readmapfilter($xtanggalawal, $xtanggalakhir);
         $hasil = array();
 
@@ -39,6 +40,7 @@ class Dashboard extends CI_Controller
             'daftar' => $data,
             'lokasi' => $hasil,
             'graph' => $graph,
+            'status' => $status,
             'title' => $title,
             'user' =>  $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array(),
             'tanggalawal' => $xtanggalawal,

@@ -13,6 +13,15 @@ class Rangkuman_model extends CI_Model
         return $this->db->query($query)->result();
         echo json_encode($query);
     }
+    public function status($tglawal, $tglakhir)
+    {
+        $query = "SELECT COUNT(k.id) as jumlahkasus,kec.nama_kecamatan
+        FROM kecamatan kec
+        LEFT JOIN kasus k on kec.id = k.kecamatan
+        WHERE k.tanggal BETWEEN '$tglawal' AND '$tglakhir'
+        GROUP BY kec.id";
+        return $this->db->query($query)->result_array();
+    }
     public function total($tglawal, $tglakhir)
     {
         $query = "SELECT COUNT(k.id) as totalkasus

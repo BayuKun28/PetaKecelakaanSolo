@@ -88,6 +88,118 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6 col-sm-6 ">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Table Status</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">Settings 1</a>
+                                        <a class="dropdown-item" href="#">Settings 2</a>
+                                    </div>
+                                </li>
+                                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <table class="table table-striped table-hover" id="tabledata">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Kecamatan</th>
+                                        <th>Jumlah</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $i = 1; ?>
+                                    <?php foreach ($status as $s) : ?>
+                                        <tr>
+                                            <td><?= $i; ?></td>
+                                            <td><?= $s['nama_kecamatan']; ?></td>
+                                            <td><?= $s['jumlahkasus']; ?></td>
+                                            <td>
+                                                <?php if ($s['jumlahkasus'] <= 10) {
+                                                    echo "<img src=". base_url('assets/status/hijau.png');" > ";
+                                                }
+                                                elseif ($s['jumlahkasus'] > 10 && $s['jumlahkasus'] <= 20 ) {
+                                                    echo "<img src=". base_url('assets/status/kuning.png');" > ";
+                                                }
+                                                elseif ($s['jumlahkasus'] > 20 && $s['jumlahkasus'] <= 30 ) {
+                                                    echo "<img src=". base_url('assets/status/orange.png');" > ";
+                                                }elseif ($s['jumlahkasus'] > 30 ) {
+                                                    echo "<img src=". base_url('assets/status/merah.png');" > ";
+                                                }
+                                                ?>
+                                            </td>
+                                        </tr>
+                                        <?php $i++; ?>
+                                    <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 ">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Keterangan</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">Settings 1</a>
+                                        <a class="dropdown-item" href="#">Settings 2</a>
+                                    </div>
+                                </li>
+                                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <table class="table table-striped table-hover" id="tabledata">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Status</th>
+                                        <th>Keterangan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><img src="<?= base_url('assets/status/hijau.png'); ?>"></td>
+                                            <td>Aman</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td><img src="<?= base_url('assets/status/kuning.png'); ?>"></td>
+                                            <td>Kurang Aman</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td><img src="<?= base_url('assets/status/orange.png'); ?>"></td>
+                                            <td>Rawan</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td><img src="<?= base_url('assets/status/merah.png'); ?>"></td>
+                                            <td>Berbahaya</td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="x_content">
                 <div class="clearfix"></div>
@@ -253,7 +365,7 @@ foreach ($graph as $item) {
     var array = [];
     for (var i = 0; i < locations.length; i++) {
         marker = new L.marker([locations[i][1], locations[i][2]])
-            .bindPopup("Lokasi:" + locations[i][4] + "<br>Keterangan:" + locations[i][3]);
+        .bindPopup("Lokasi:" + locations[i][4] + "<br>Keterangan:" + locations[i][3]);
         array.push(marker);
     }
     var layerGroup = L.featureGroup(array).addTo(mymap);
