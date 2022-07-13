@@ -126,7 +126,7 @@ class Kasus extends CI_Controller
         $data['total'] = $this->rangkuman_model->total($xtanggalawal, $xtanggalakhir);
 
         $dompdf = new Dompdf();
-        $dompdf->setPaper('A4', 'Portrait');
+        $dompdf->setPaper('A3', 'Portrait');
         $html = $this->load->view('kasus/cetak', $data, true);
         $dompdf->load_html($html);
         $dompdf->render();
