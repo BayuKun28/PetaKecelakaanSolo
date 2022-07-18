@@ -113,7 +113,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Kecamatan</th>
-                                        <th>Jumlah</th>
+                                        <th>Jumlah Kecelakaan</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
